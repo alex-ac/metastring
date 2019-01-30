@@ -1,0 +1,33 @@
+# Copyright (c) 2019 Aleksandr Derbenev. All rights reserved.
+
+cxxflags = $
+  -g -O2 $
+  -march=native $
+  -std=c++17 -stdlib=libc++ $
+  -Wall -Werror -Wpedantic $
+
+cppflags = $
+  -Wno-builtin-macro-redefined -D__TIME__= -D__DATE__= -D__TIMESTAMP__= $
+  -I.
+
+linkflags = $
+
+rule cxx
+  depfile = $out.d
+  deps = gcc
+  command = clang++ -c -o $out -MMD -MF $depfile $in $cxxflags $cppflags
+  description = CXX $out
+
+rule link
+  rspfile = $out.rsp
+  rspfile_content = $in_newline
+  command = clang++ -o $out @"$rspfile" $cxxflags $linkflags
+  description = LINK $out
+
+build all: phony $
+  examples/template_parameter $
+
+build examples/template_parameter: link examples/template_parameter.cc.o
+build examples/template_parameter.cc.o: cxx examples/template_parameter.cc
+
+default all
