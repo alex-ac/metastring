@@ -8,6 +8,14 @@ namespace meta {
 template <char... Chars>
 struct String {};
 
+template <class T>
+struct Get;
+
+template <char... Chars>
+struct Get<String<Chars...>> {
+  static constexpr char value[] = { Chars... };
+};
+
 }  // namespace meta
 
 #endif  // META_STRING_H_

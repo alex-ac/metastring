@@ -26,8 +26,12 @@ rule link
 
 build all: phony $
   examples/template_parameter $
+  examples/get_content_in_runtime $
 
 build examples/template_parameter: link examples/template_parameter.cc.o
 build examples/template_parameter.cc.o: cxx examples/template_parameter.cc
+
+build examples/get_content_in_runtime: link examples/get_content_in_runtime.cc.o
+build examples/get_content_in_runtime.cc.o: cxx examples/get_content_in_runtime.cc
 
 default all
