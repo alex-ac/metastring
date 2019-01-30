@@ -5,3 +5,4 @@
 *.o
 examples/template_parameter
 examples/get_content_in_runtime
+examples/concat

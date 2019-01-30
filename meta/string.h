@@ -16,6 +16,14 @@ struct Get<String<Chars...>> {
   static constexpr char value[] = { Chars... };
 };
 
+template <class A, class B>
+struct Concat;
+
+template <char... Chars, char... ExtraChars>
+struct Concat<String<Chars...>, String<ExtraChars...>> {
+  using type = String<Chars..., ExtraChars...>;
+};
+
 }  // namespace meta
 
 #endif  // META_STRING_H_
