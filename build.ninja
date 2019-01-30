@@ -31,29 +31,29 @@ rule action
   description = GEN $out
 
 build all: phony $
-  examples/template_parameter $
-  examples/get_content_in_runtime $
-  examples/concat $
-  examples/literal $
+  examples/template_parameter.exe $
+  examples/get_content_in_runtime.exe $
+  examples/concat.exe $
+  examples/literal.exe $
 
 build meta/string : phony meta/gen_string_macro.h
-build meta/gen_string_macro.h: action || meta/gen_macro
-  executable = meta/gen_macro
+build meta/gen_string_macro.h: action || meta/gen_macro.exe
+  executable = meta/gen_macro.exe
   args = meta/gen_string_macro.h $max_meta_string_literal_size
 
-build meta/gen_macro: link meta/gen_macro.cc.o
+build meta/gen_macro.exe: link meta/gen_macro.cc.o
 build meta/gen_macro.cc.o: cxx meta/gen_macro.cc
 
-build examples/template_parameter: link examples/template_parameter.cc.o
+build examples/template_parameter.exe: link examples/template_parameter.cc.o
 build examples/template_parameter.cc.o: cxx examples/template_parameter.cc | meta/string
 
-build examples/get_content_in_runtime: link examples/get_content_in_runtime.cc.o
+build examples/get_content_in_runtime.exe: link examples/get_content_in_runtime.cc.o
 build examples/get_content_in_runtime.cc.o: cxx examples/get_content_in_runtime.cc | meta/string
 
-build examples/concat: link examples/concat.cc.o
+build examples/concat.exe: link examples/concat.cc.o
 build examples/concat.cc.o: cxx examples/concat.cc | meta/string
 
-build examples/literal: link examples/literal.cc.o
+build examples/literal.exe: link examples/literal.cc.o
 build examples/literal.cc.o: cxx examples/literal.cc | meta/string
 
 default all

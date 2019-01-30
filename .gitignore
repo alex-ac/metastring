@@ -3,9 +3,9 @@
 .ninja_deps
 .ninja_log
 *.o
-examples/template_parameter
-examples/get_content_in_runtime
-examples/concat
-examples/literal
-meta/gen_macro
+examples/template_parameter.exe
+examples/get_content_in_runtime.exe
+examples/concat.exe
+examples/literal.exe
+meta/gen_macro.exe
 meta/gen_string_macro.h
