@@ -6,3 +6,6 @@
 examples/template_parameter
 examples/get_content_in_runtime
 examples/concat
+examples/literal
+meta/gen_macro
+meta/gen_string_macro.h
